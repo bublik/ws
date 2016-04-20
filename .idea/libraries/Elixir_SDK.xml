@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Elixir SDK">
     <CLASSES>
-      <root url="file:///usr/local/bin" />
+      <root url="file:///usr/local" />
     </CLASSES>
     <SOURCES />
   </library>
