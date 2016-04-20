@@ -12,7 +12,7 @@ config :ws, Ws.Endpoint,
   secret_key_base: "iXJ+b5mgfmUBhXF8He4oJ5xWe0jmbyrcW88z86bcFda0KbiQxZdkV+84MrCFbyL+",
   render_errors: [accepts: ~w(html json)],
   #pubsub: [name: Ws.PubSub, adapter: Phoenix.PubSub.PG2]
-  pubsub: [name: Ph2.PubSub, adapter: Phoenix.PubSub.Redis, host: "127.0.0.1"]
+  pubsub: [name: Ws.PubSub, adapter: Phoenix.PubSub.Redis, host: "127.0.0.1"]
 
 # Configures Elixir's Logger
 config :logger, :console,

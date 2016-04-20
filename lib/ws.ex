@@ -12,7 +12,7 @@ defmodule Ws do
       # Start the Ecto repository
       supervisor(Ws.Repo, []),
       # Here you could define other workers and supervisors as children
-      # worker(Ws.Worker, [arg1, arg2, arg3]),
+       worker(Ws.ChannelMonitor, [%{}]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

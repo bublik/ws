@@ -1,7 +1,7 @@
 defmodule Ws.Endpoint do
   use Phoenix.Endpoint, otp_app: :ws
 
-  socket "/socket", Ws.UserSocket
+  socket "/ws", Ws.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

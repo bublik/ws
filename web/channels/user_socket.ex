@@ -1,8 +1,10 @@
 defmodule Ws.UserSocket do
   use Phoenix.Socket
+  alias Ws.{Repo, User}
 
   ## Channels
-  # channel "rooms:*", Ws.RoomChannel
+  channel "houses:dialog", Ws.DialogChannel
+  #channel "houses:room", Ws.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,8 +21,16 @@ defmodule Ws.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+
+  def connect(%{"token" => token}, socket) do
+    # 1 day = 86400 seconds
+    case Phoenix.Token.verify(socket, "user", token, max_age: 86400) do
+      {:ok, user_id} ->
+        socket = assign(socket, :current_user, Repo.get!(User, user_id))
+        {:ok, socket}
+      {:error, _} ->
+        :error
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
